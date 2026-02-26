@@ -1,28 +1,29 @@
 #include<iostream>
 using namespace std;
 
+bool isPrime(long long n){
+    if(n <= 1) return false;
+    if(n == 2) return true;
+    if(n % 2 == 0) return false;
+
+    for(long long i = 3; i * i <= n; i += 2){
+        if(n % i == 0)
+            return false;
+    }
+    return true;
+}
+
 int main(){
-    int n;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    long long n;
     cin >> n;
 
-    bool isPrime = true;
-
-    if(n <= 1){
-        isPrime = false;
-    } else {
-        for(int i = 2; i*i<=n; i++){
-            if(n % i == 0){
-                isPrime = false;
-                break;
-            }
-        }
-    }
-
-    if(isPrime){
+    if(isPrime(n))
         cout << "YES";
-    } else {
+    else
         cout << "NO";
-    }
 
     return 0;
 }
